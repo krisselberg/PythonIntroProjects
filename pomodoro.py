@@ -5,17 +5,17 @@ import os
 # Notification system (for MacOS) dependent on which Pomodoro technique you choose in the command line
 def pomo(duration, period):
     start = time.time()
+    os.system(f'''
+              osascript -e 'display notification "{"Your Pomodoro session has started."}" with title "{"Start Working!"}"'
+               ''')
+    os.system('say "be less impressed and be more involved"')
     while True:
-        if time.time() > start + duration*60*60+1 : 
+        if time.time() > start + duration*60*60-1 : 
             os.system(f'''
                       osascript -e 'display notification "{"Your Pomodoro session has ended."}" with title "{"All done!"}"'
                       ''')
             os.system('say "your pomodoro session has ended"')
             break
-        os.system(f'''
-                  osascript -e 'display notification "{"Your Pomodoro session has started."}" with title "{"Start Working!"}"'
-                  ''')
-        os.system('say "be less impressed and be more involved"')
         time.sleep(period*60)
         if period == 25:
             os.system(f'''
