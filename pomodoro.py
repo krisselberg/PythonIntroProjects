@@ -6,6 +6,12 @@ import os
 def pomo(duration, period):
     start = time.time()
     while True:
+        if time.time() > start + duration*60*60+1 : 
+            os.system(f'''
+                      osascript -e 'display notification "{"Your Pomodoro session has ended."}" with title "{"All done!"}"'
+                      ''')
+            os.system('say "your pomodoro session has ended"')
+            break
         os.system(f'''
                   osascript -e 'display notification "{"Your Pomodoro session has started."}" with title "{"Start Working!"}"'
                   ''')
@@ -41,12 +47,6 @@ def pomo(duration, period):
                       osascript -e 'display notification "{"You have the work ethic and courage to tackle this task."}" with title "{"Get back to work!"}"'
                       ''')
             os.system('say "get back to work"')
-        if time.time() > start + duration*60*60+1 : 
-            os.system(f'''
-                      osascript -e 'display notification "{"Your Pomodoro session has ended."}" with title "{"All done!"}"'
-                      ''')
-            os.system('say "your pomodoro session has ended"')
-            break
 
 # Taking input from the user to run Pomodoro program
 def command():
